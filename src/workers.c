@@ -289,13 +289,13 @@ void workers_render(mode_t mode, workers_t *workers, int workers_count, workers_
                     .a = 100
                 });
 
-                for (int l = 0; l < world[i][j].nations_count; l++)
+/*                 for (int l = 0; l < world[i][j].nations_count; l++)
                 {
                     if (world[i][j].nations[l].id == target_nation)
                     {
                         DrawRectangle(j * CELL_PIXEL_SIZE, i * CELL_PIXEL_SIZE, CELL_PIXEL_SIZE * 10, CELL_PIXEL_SIZE * 10, GREEN);
                     }
-                }
+                } */
             }
         }
     }
