@@ -109,6 +109,57 @@ int main()
             begin_time = clock();
         }
 
+        if (IsKeyPressed(KEY_R)) // Reload world.
+        {
+            for (int i = 0; i < WORLD_SIZE; i++)
+            {   
+                for (int j = 0; j < WORLD_SIZE; j++)
+                {
+                    world[i][j].nations_count = 0;
+                    world[i][j].nations = NULL;
+
+                    world[i][j].building.time = 0;
+                    world[i][j].building.bt = NULL;
+                    world[i][j].building.type = 0;
+                    world[i][j].building.material[0].type = 0;
+                    world[i][j].building.material[0].value = 0;
+                    world[i][j].building.material[1].type = 0;
+                    world[i][j].building.material[1].value = 0;
+                    world[i][j].building.material[2].type = 0;
+                    world[i][j].building.material[2].value = 0;
+                    world[i][j].building.material[3].type = 0;
+                    world[i][j].building.material[3].value = 0;
+
+                    world[i][j].temperature = 0;
+                    world[i][j].material[0].type = NON;
+                    world[i][j].material[0].value = NON;
+                    world[i][j].material[1].type = NON;
+                    world[i][j].material[1].value = NON;
+                    world[i][j].material[2].type = NON;
+                    world[i][j].material[2].value = NON;
+                }
+            }
+
+            temperature_layer_generate(world);
+            grass_layer_generate(world);
+            snow_layer_generate(world);
+            sand_layer_generate(world);
+            tree_layer_generate(world);
+            water_layer_generate(world);
+            rock_layer_generate(world);
+            stick_layer_generate(world);
+            stone_layer_generate(world);
+
+            target_nation = GetRandomValue(0, nations_count - 1);
+            
+            ore_layer_generate(COAL, 50, 100, 50, 5, 7, world);
+            ore_layer_generate(COPPER, 60, 120, 70, 5, 7, world);
+            ore_layer_generate(IRON, 40, 80, 30, 3, 5, world);
+            ore_layer_generate(OIL, 20, 40, 10, 3, 5, world);
+            ore_layer_generate(GLD, 20, 30, 10, 3, 5, world);
+            ore_layer_generate(TITANIUM, 10, 20, 20, 3, 3, world);
+        }
+        
         camera_update(&camera);
         world_update(camera, &target_cell, world);
         bulding_update(&mode.mode, building, world, camera, &target_building);
@@ -146,7 +197,7 @@ int main()
         {
             for (int k = 0; k < world[i][j].nations_count; k++)
             {
-                if (world[i][j].nations[k].feature != NULL)
+/*                 if (world[i][j].nations[k].feature != NULL)
                 {
                     free(world[i][j].nations[k].feature);
                 }
@@ -154,7 +205,7 @@ int main()
                 if (world[i][j].nations[k].influence_from != NULL)
                 {
                     free(world[i][j].nations[k].influence_from);
-                }
+                } */
             }
 
             if (world[i][j].nations != NULL)
