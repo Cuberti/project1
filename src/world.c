@@ -651,7 +651,7 @@ void nations_layer_generate(cell_t **world, int *nations_count)
                 world[i][j].nations[world[i][j].nations_count - 1].people = GetRandomValue(2, 5);
                 world[i][j].nations[world[i][j].nations_count - 1].influence_from = malloc(1);
 
-                for (int l = 0; l < WORLD_SIZE; l++)
+/*                 for (int l = 0; l < WORLD_SIZE; l++)
                 {
                     for (int n = 0; n < WORLD_SIZE; n++)
                     {
@@ -661,9 +661,9 @@ void nations_layer_generate(cell_t **world, int *nations_count)
                             world[l][n].nations[m].influence_from[(*nations_count) - 1] = 0;
                         }
                     }
-                }
+                } */
 
-                world[i][j].nations[world[i][j].nations_count - 1].influence_from[(*nations_count) - 1] = 100;       
+                //world[i][j].nations[world[i][j].nations_count - 1].influence_from[(*nations_count) - 1] = 100;       
             }
         }
     }
